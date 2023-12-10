@@ -33,4 +33,16 @@ public class Bill {
     private String deliveryCity;
     @Column(name = "zip_code")
     private String deliveryPinCode;
+
+    @Column(name = "card_number")
+    private String cardNumber;
+
+    @Column(name = "card_holder_name")
+    private String cardHolderName;
+
+    @Column(name = "expiry_date")
+    private String expiryDate;
+
+    @Column(name = "cvv")
+    private String CVV;
 }

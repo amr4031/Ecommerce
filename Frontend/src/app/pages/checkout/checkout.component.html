@@ -1,57 +1,117 @@
 <section>
     <div class="container mt-5">
         <div class="row">
-            <!-- Billing Address -->
-            <div class="col-lg-6 col-md-12 mb-3">
-                <div class="card shadow">
-                    <div class="card-header bg-danger bg-opacity-25">
-                        <h4>العنوان</h4>
-                    </div>
-                    <div class="card-body mb-5">
-                        <!-- form start -->
-                        <div class="row">
-                            
-                            <div class="col-lg-6 col-md-6">
-                                <input type="text" placeholder="المدينة " [(ngModel)]="checkoutObj.DeliveryCity" class="form-control m-2">
-                            </div>
-                            <div class="col-lg-6 col-md-6">
-                                <input type="text" placeholder="الرقم البريدي " [(ngModel)]="checkoutObj.DeliveryPinCode" class="form-control m-2">
-                            </div> 
-                            <div class="col-lg-6 col-md-6">
-                                <textarea placeholder="العنوان 1 " [(ngModel)]="checkoutObj.DeliveryAddress1" class="form-control m-2" rows="3"></textarea> 
-                            </div>
-                            <div class="col-lg-6 col-md-6">
-                                <textarea placeholder="العنوان  2" [(ngModel)]="checkoutObj.DeliveryAddress2" class="form-control m-2" rows="3"></textarea>
-                            </div>
-                            <div class="col-lg-6 col-md-6">
-                                <textarea placeholder="تفاصيل اخرى" [(ngModel)]="checkoutObj.DeliveryLandMark" class="form-control m-2" rows="3"></textarea>
-                            </div> 
-                            
+
+            <div class="col-lg-7 col-md-12 mb-3">
+
+                <!-- Billing Address -->
+                <div class="col-lg-6 col-md-12 mb-3">
+                    <div class="card shadow  mb-3">
+                        <div class="card-header bg-opacity-25 " style="background-color: rgb(144, 210, 248) !important;">
+                            <h4>العنوان</h4>
                         </div>
-                        <!-- form end -->
+                        <div class="card-body mb-5">
+                            <!-- form start -->
+                            <div class="row">
+
+                                <div class="col-lg-6 col-md-6">
+                                    <input type="text" placeholder="المدينة " [(ngModel)]="checkoutObj.DeliveryCity"
+                                        class="form-control m-2">
+                                </div>
+                                <div class="col-lg-6 col-md-6">
+                                    <input type="text" placeholder="الرقم البريدي "
+                                        [(ngModel)]="checkoutObj.DeliveryPinCode" class="form-control m-2">
+                                </div>
+                                <div class="col-lg-6 col-md-6">
+                                    <textarea placeholder="العنوان 1 " [(ngModel)]="checkoutObj.DeliveryAddress1"
+                                        class="form-control m-2" rows="3"></textarea>
+                                </div>
+                                <div class="col-lg-6 col-md-6">
+                                    <textarea placeholder="العنوان  2" [(ngModel)]="checkoutObj.DeliveryAddress2"
+                                        class="form-control m-2" rows="3"></textarea>
+                                </div>
+                                <div class="col-lg-6 col-md-6">
+                                    <textarea placeholder="تفاصيل اخرى" [(ngModel)]="checkoutObj.DeliveryLandMark"
+                                        class="form-control m-2" rows="3"></textarea>
+                                </div>
+
+                            </div>
+                            <!-- form end -->
+                        </div>
+                    </div>
+                </div>
+                      <!-- Payment Method Selection -->
+            <div class="payment-options mb-3">
+                <label style=" margin-right: 10px;">
+                    <input type="radio" name="paymentMethod" value="creditCard" [(ngModel)]="paymentMethod ">
+                    Pay with Credit Card
+                </label>
+
+                <label>
+                    <input type="radio" name="paymentMethod" value="cash" [(ngModel)]="paymentMethod">
+                    Cash on Delivery
+                </label>
+            </div>  
+                <!-- payment-options.component.html -->
+                <div class="col-lg-6 col-md-12 mb-3">
+                    <!-- Credit Card Payment Form -->
+                    <div class="col-lg-20 col-md-12 mb-3" *ngIf="paymentMethod === 'creditCard'" >
+                        <div class="card shadow">
+                            <div class="card-header bg-danger bg-opacity-25" style="background-color: rgb(144, 210, 248) !important;">
+                                <h4>Credit Card Payment Details</h4>
+                            </div>
+                            <div class="card-body mb-5">
+                                <!-- Form Start -->
+                                <form >
+                                    <div class="form-group">
+                                        <label for="cardNumber">Card Number</label>
+                                        <input type="text" class="form-control" id="cardNumber"
+                                            [(ngModel)]="checkoutObj.cardNumber" name="cardNumber" required>
+                                    </div>
+
+                                    <div class="form-group">
+                                        <label for="cardHolderName">Cardholder Name</label>
+                                        <input type="text" class="form-control" id="cardHolderName"
+                                            [(ngModel)]="checkoutObj.cardHolderName" name="cardHolderName" required>
+                                    </div>
+
+                                    <div class="form-group">
+                                        <label for="expiryDate">Expiry Date</label>
+                                        <input type="text" class="form-control" id="expiryDate"
+                                            [(ngModel)]="checkoutObj.expiryDate" name="expiryDate" required>
+                                    </div>
+
+                                    <div class="form-group">
+                                        <label for="cvv">CVV</label>
+                                        <input type="text" class="form-control" id="cvv" [(ngModel)]="checkoutObj.cvv"
+                                            name="cvv" required>
+                                    </div>
+                                </form>
+                                <!-- Form End -->
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>
+
             <!-- Your Order -->
             <div class="col-lg-5 col-md-12">
-                <div class="card shadow ">
-                    <div class="card-header  bg-danger bg-opacity-25">
+                <div class="card shadow " >
+                    <div class="card-header  bg-danger bg-opacity-25" style="background-color: rgb(144, 210, 248) !important;">
                         <h4>طلبك</h4>
                     </div>
                     <div class="card-body">
                         <div class="border-top d-flex mt-2" *ngFor="let item of cartItems">
-                            <img class="img-fluid h-20 w-20 p-1 " [src]="item.productImageUrl"
-                                alt="">
+                            <img class="img-fluid h-20 w-20 p-1 " [src]="item.productImageUrl" alt="">
                             <div class="ps-3">
                                 <p class="p-0 m-0 fw-semibold">{{item.productName | slice:0-10}}</p>
                                 <p class="p-0 m-0">${{item.productPrice}}</p>
-                                <p class="text-start mt-4"><button class="btn">الكمية : <b>{{item.quantity}}</b> </button></p>
+                                <p class="text-start mt-4"><button class="btn">الكمية : <b>{{item.quantity}}</b>
+                                    </button></p>
                             </div>
                         </div>
-                        
+
                         <div class="border-top ">
-                            
-                           
                             <div class=" border-top ">
                                 <div class="d-flex justify-content-between mt-2">
                                     <p class="fw-semibold">المجموع :</p>
@@ -61,7 +121,8 @@
                             <div class="row border-top ">
                                 <div class="col-12 text-center mt-2">
                                     <div class="w-100 bg-black">
-                                        <button class="btn text-white rounded-0 " (click)="placeOrder()">إتمام الطلب</button>
+                                        <button class="btn text-white rounded-0 " (click)="placeOrder()">إتمام
+                                            الطلب</button>
                                     </div>
                                 </div>
                             </div>

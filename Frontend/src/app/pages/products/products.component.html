@@ -1,5 +1,5 @@
 <section id="product">
-    <li *ngIf="loggedObj.userName === 'Admin'" class="nav-item">
+    <li *ngIf="loggedObj.userName === 'admin'" class="nav-item">
         <button class="floating-button" data-bs-toggle="modal" data-bs-target="#addProductModal">
             Add Product
         </button>
@@ -64,12 +64,12 @@
                     <br>
                     <i class="fa fa-cart-shopping fs-4" style="color: #f54242; margin-right: 10px;"></i>
                     <span class="textBlur" style="font-size: 30px;">Welcome To Marmoxboard Egypt Website</span>
-                    <ul class="list-unstyled scrollable-horizontal-list justify-content-center">
+                    <!-- <ul class="list-unstyled scrollable-horizontal-list justify-content-center">
                         <li *ngFor="let category of categories" (click)="getAllProductsByCateogry(category.categoryId)">
                             <a class="m-4 text-decoration-none fw-semibold"
                                 [ngClass]="selectedCategory == category.categoryId ? 'text-danger' : 'text-black'">{{category.categoryName}}</a>
                         </li>
-                    </ul>
+                    </ul> -->
                 </div>
             </div>
             <div class="col-12">

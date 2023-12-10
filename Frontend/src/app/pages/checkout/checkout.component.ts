@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ProductService } from 'src/app/services/product.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-checkout',
@@ -11,20 +12,31 @@ export class CheckoutComponent implements OnInit {
   loggedObj: any = {};
   cartItems: any[]= [];
   checkoutObj: any = {
-    "SaleId": 0,
-    "CustId": 0,
-    "SaleDate": new Date(),
-    "TotalInvoiceAmount": 0,
-    "Discount": 0,
-    "PaymentNaration": "",
-    "DeliveryAddress1": "",
-    "DeliveryAddress2": "",
-    "DeliveryCity": "",
-    "DeliveryPinCode": "",
-    "DeliveryLandMark": ""
+    "Id": 0,
+    "customerId": 0,
+    "saleDate": new Date(),
+    "totalPrice": 0,
+    "discount": 0,
+    "paymentType": "",
+    "deliveryAddress1": "",
+    "deliveryAddress2": "",
+    "deliveryCity": "",
+    "deliveryPinCode": "",
+    "cardNumber": "",
+    "cardHolderName": "",
+    "expiryDate": "",
+    "CVV": ""
   }
 
-  constructor(private productSrv: ProductService) {
+  paymentMethod: string ='';
+  cardDetails = {
+      cardNumber: '',
+      cardHolderName: '',
+      expiryDate: '',
+      cvv: ''
+  };
+
+  constructor(private productSrv: ProductService, private router: Router) {
     const localData = localStorage.getItem('amazon_user');
     if(localData != null) {
       const parseObj =  JSON.parse(localData);
@@ -48,11 +60,15 @@ export class CheckoutComponent implements OnInit {
   }
 
   placeOrder() {
-    this.checkoutObj.checkoutObj =  this.loggedObj.custId;
+    this.checkoutObj.customerId =  this.loggedObj.id;
     this.productSrv.PlaceOrder(this.checkoutObj).subscribe((res: any)=> {
-      if(res.result) { 
-        this.productSrv.cartUpdated.next(true);
+      if(res) { 
+        
         alert("Order Has Been Succefully Placed")
+        this.productSrv.removeAllProductFromCart(this.checkoutObj.customerId).subscribe((res: any)=> {
+        })
+        this.productSrv.cartUpdated.next(true);
+        this.router.navigate(['/products']);
       } else {
         alert(res.message)
       }

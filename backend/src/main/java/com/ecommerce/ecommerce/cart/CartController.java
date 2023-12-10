@@ -11,7 +11,7 @@ import java.util.List;
 
 @RestController
 @RequestMapping("/carts-apis")
-@CrossOrigin
+@CrossOrigin(origins = "http://localhost:4202")
 public class CartController {
     @Autowired
     CartService cartService;
@@ -43,5 +43,10 @@ public class CartController {
     public ResponseEntity<Cart> removeCartItem(@PathVariable Long customerId, @PathVariable Long productId) {
 
         return new ResponseEntity<>(cartService.removeCartItem(customerId, productId).get(), HttpStatus.OK);
+    }
+
+    @DeleteMapping("remove-all/{customerId}")
+    public void deleteAllCartItems(@PathVariable Long customerId) {
+        cartService.deleteAllCartItemsForCustomer(customerId);
     }
 }

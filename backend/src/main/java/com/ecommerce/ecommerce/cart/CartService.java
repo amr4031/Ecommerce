@@ -62,4 +62,30 @@ public class CartService {
         }
         return cartItem;
     }
+
+    public Optional<Cart> removeCartItemn(Long customerId, Long productId) {
+        // Find the cart item
+        Optional<Cart> cartItem = cartRepository.findByCustomerIdAndProductId(customerId, productId);
+
+        if (cartItem.isPresent()) {
+            Cart existingCartItem = cartItem.get();
+
+            if (existingCartItem.getQuantity() > 1) {
+                // If quantity is greater than 1, decrement and update
+                existingCartItem.setQuantity(existingCartItem.getQuantity() - 1);
+                cartRepository.save(existingCartItem);
+            } else {
+                // If quantity is 1, delete the cart item
+                cartRepository.deleteById(existingCartItem.getId());
+            }
+        } else {
+            // Optional: throw an exception or handle the case where the cart item is not found
+            // For example: throw new CartItemNotFoundException("Cart item not found");
+        }
+        return cartItem;
+    }
+
+    public void deleteAllCartItemsForCustomer(Long customerId) {
+        cartRepository.deleteAllByCustomerId(customerId);
+    }
 }

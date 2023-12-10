@@ -47,10 +47,12 @@ export class ProductService {
 
   removeProductFromCart(customerId: number,productId: number): Observable<any[]> {
     return this.http.delete<any[]>("http://localhost:8080/carts-apis/remove/"+ customerId +"/" + productId);
-    
   }
 
+  removeAllProductFromCart(customerId: number): Observable<any[]> {
+    return this.http.delete<any[]>("http://localhost:8080/carts-apis/remove-all/"+ customerId);
+  }
   PlaceOrder(obj: any) : Observable<any> {
-    return this.http.post<any>("https://freeapi.miniprojectideas.com/api/amazon/PlaceOrder", obj);
+    return this.http.post<any>("http://localhost:8080/bills-apis/add-bill", obj);
   }
 }
