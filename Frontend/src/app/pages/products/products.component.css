@@ -1,0 +1,15 @@
+.scrollable-horizontal-list {
+    display: flex;
+    flex-direction: row;
+    overflow-x: auto;
+    white-space: nowrap;
+    -webkit-overflow-scrolling: touch; /* For smooth scrolling on touch devices */
+}
+
+.scrollable-horizontal-list::-webkit-scrollbar {
+    display: none; /* Hide scrollbar for Webkit browsers */
+}
+
+.scrollable-horizontal-list li {
+    flex: 0 0 auto; /* Prevent flex items from growing or shrinking */
+}
