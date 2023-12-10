@@ -1,7 +1,6 @@
 package com.ecommerce.ecommerce.product;
 
-import com.ecommerce.ecommerce.product.Product;
-import com.ecommerce.ecommerce.product.ProductService;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -11,7 +10,7 @@ import java.util.List;
 
 @RestController
 @RequestMapping("/products-apis")
-@CrossOrigin
+@CrossOrigin(origins = "http://localhost:4202")
 public class ProductController {
     @Autowired
     ProductService productService;

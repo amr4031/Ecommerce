@@ -18,10 +18,12 @@ export class AppComponent {
     "UserName": "",
     "UserPassword": ""
   }
+
   loggedObj: any = {};
   cartItems: any[]= [];
   loginModelClass: string = '';
   constructor(private productSrv: ProductService) {
+    debugger
     const localData = localStorage.getItem('amazon_user');
     if(localData != null) {
       const parseObj =  JSON.parse(localData);
@@ -101,4 +103,6 @@ export class AppComponent {
     window.location.reload();
   }
   
+
+
 }

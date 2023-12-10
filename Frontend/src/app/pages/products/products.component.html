@@ -1,4 +1,61 @@
 <section id="product">
+    <li *ngIf="loggedObj.userName === 'Admin'" class="nav-item">
+        <button class="floating-button" data-bs-toggle="modal" data-bs-target="#addProductModal">
+            Add Product
+        </button>
+    </li>
+    
+    <!-- Add Product Modal -->
+    <div class="modal fade" id="addProductModal" tabindex="-1" aria-labelledby="addProductModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="addProductModalLabel">Add New Product</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <form #addProductForm="ngForm" (ngSubmit)="submitProduct()">
+                        <div class="form-group">
+                            <label for="productName">Product Name</label>
+                            <input type="text" class="form-control" id="productName" 
+                                   [(ngModel)]="product.productName" name="productName" required #productName="ngModel">
+                            <div *ngIf="productName.invalid && productName.touched" class="alert alert-danger">
+                                Product Name is required.
+                            </div>
+                        </div>
+    
+                        <div class="form-group">
+                            <label for="productPrice">Product Price</label>
+                            <input type="text" class="form-control" id="productPrice" 
+                                   [(ngModel)]="product.productPrice" name="productPrice" required #productPrice="ngModel">
+                            <div *ngIf="productPrice.invalid && productPrice.touched" class="alert alert-danger">
+                                Product Price is required.
+                            </div>
+                        </div>
+    
+                        <div class="form-group">
+                            <label for="imageUrl">Image URL</label>
+                            <input type="text" class="form-control" id="imageUrl" 
+                                   [(ngModel)]="product.imageUrl" name="imageUrl">
+                        </div>
+                    </form>
+                </div>
+
+
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                    <!-- Disable button if form is invalid -->
+                    <button type="button" class="btn btn-primary" 
+                            [disabled]="addProductForm.invalid" 
+                            (click)="addProductForm.ngSubmit.emit()">Add Product</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+    
+    
     <div class="container">
         <div class="row">
             <div class="col-12">

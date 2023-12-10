@@ -13,3 +13,23 @@
 .scrollable-horizontal-list li {
     flex: 0 0 auto; /* Prevent flex items from growing or shrinking */
 }
+
+.floating-button {
+    position: fixed;
+    bottom: 20px;      /* Adjust the distance from the top */
+    right: 20px;    /* Adjust the distance from the right */
+    z-index: 1000;  /* Ensures the button stays above other content */
+
+    /* Additional styling for the button */
+    background-color: #007bff; /* Example background color */
+    color: white;              /* Text color */
+    border: none;              /* Removes the border */
+    border-radius: 5px;        /* Rounded corners */
+    padding: 10px 20px;        /* Padding inside the button */
+    cursor: pointer;           /* Cursor on hover */
+}
+
+/* Styling for hover effect */
+.floating-button:hover {
+    background-color: #0056b3; /* Darker shade for hover effect */
+}

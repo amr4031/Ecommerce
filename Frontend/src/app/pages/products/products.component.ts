@@ -13,8 +13,14 @@ export class ProductsComponent implements OnInit{
   selectedCategory: number = 0;
   loggedObj: any = {};
 
+  product = {
+    productName: '',
+    productPrice: '',
+    imageUrl: ''
+};
   constructor(private productSrv: ProductService) {
     const localData = localStorage.getItem('amazon_user');
+    debugger
     if(localData != null) {
       const parseObj =  JSON.parse(localData);
       this.loggedObj = parseObj;
@@ -22,9 +28,22 @@ export class ProductsComponent implements OnInit{
   }
 
   ngOnInit(): void {
+    debugger
     this.loadProducts();
     this.loadCategory();
   }
+  submitProduct() {
+
+    this.productSrv.createProduct(this.product).subscribe((res: any)=> {
+      if(res) {
+        alert("Product Added");     
+        window.location.reload();    
+      } else {
+        alert(res.message)
+      }
+    })
+    console.log(this.product);
+}
   loadProducts() {
     this.productSrv.getAllProducts().subscribe((Res: any) =>{
       this.productsArray = Res;
@@ -69,6 +88,8 @@ export class ProductsComponent implements OnInit{
       }) 
     }
   }
+
+
 
 
 
