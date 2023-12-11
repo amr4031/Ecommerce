@@ -1,5 +1,4 @@
--- Schema for Ecommerce
-CREATE SCHEMA IF NOT EXISTS ecommerce;
+
 
 -- Product Table
 CREATE TABLE IF NOT EXISTS ecommerce.product (
