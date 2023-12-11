@@ -7,7 +7,8 @@
                 <!-- Billing Address -->
                 <div class="col-lg-6 col-md-12 mb-3">
                     <div class="card shadow  mb-3">
-                        <div class="card-header bg-opacity-25 " style="background-color: rgb(144, 210, 248) !important;">
+                        <div class="card-header bg-opacity-25 "
+                            style="background-color: rgb(144, 210, 248) !important;">
                             <h4>العنوان</h4>
                         </div>
                         <div class="card-body mb-5">
@@ -40,29 +41,30 @@
                         </div>
                     </div>
                 </div>
-                      <!-- Payment Method Selection -->
-            <div class="payment-options mb-3">
-                <label style=" margin-right: 10px;">
-                    <input type="radio" name="paymentMethod" value="creditCard" [(ngModel)]="paymentMethod ">
-                    Pay with Credit Card
-                </label>
+                <!-- Payment Method Selection -->
+                <div class="payment-options mb-3">
+                    <label style=" margin-right: 10px;">
+                        <input type="radio" name="paymentMethod" value="creditCard" [(ngModel)]="paymentMethod" checked>
+                        Pay with Credit Card
+                    </label>
 
-                <label>
-                    <input type="radio" name="paymentMethod" value="cash" [(ngModel)]="paymentMethod">
-                    Cash on Delivery
-                </label>
-            </div>  
+                    <label>
+                        <input type="radio" name="paymentMethod" value="cash" [(ngModel)]="paymentMethod">
+                        Cash on Delivery
+                    </label>
+                </div>
                 <!-- payment-options.component.html -->
                 <div class="col-lg-6 col-md-12 mb-3">
                     <!-- Credit Card Payment Form -->
-                    <div class="col-lg-20 col-md-12 mb-3" *ngIf="paymentMethod === 'creditCard'" >
+                    <div class="col-lg-20 col-md-12 mb-3" *ngIf="paymentMethod === 'creditCard'">
                         <div class="card shadow">
-                            <div class="card-header bg-danger bg-opacity-25" style="background-color: rgb(144, 210, 248) !important;">
+                            <div class="card-header bg-danger bg-opacity-25"
+                                style="background-color: rgb(144, 210, 248) !important;">
                                 <h4>Credit Card Payment Details</h4>
                             </div>
                             <div class="card-body mb-5">
                                 <!-- Form Start -->
-                                <form >
+                                <form>
                                     <div class="form-group">
                                         <label for="cardNumber">Card Number</label>
                                         <input type="text" class="form-control" id="cardNumber"
@@ -96,8 +98,9 @@
 
             <!-- Your Order -->
             <div class="col-lg-5 col-md-12">
-                <div class="card shadow " >
-                    <div class="card-header  bg-danger bg-opacity-25" style="background-color: rgb(144, 210, 248) !important;">
+                <div class="card shadow ">
+                    <div class="card-header  bg-danger bg-opacity-25"
+                        style="background-color: rgb(144, 210, 248) !important;">
                         <h4>طلبك</h4>
                     </div>
                     <div class="card-body">

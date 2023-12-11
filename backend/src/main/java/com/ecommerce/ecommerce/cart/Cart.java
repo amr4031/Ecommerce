@@ -30,12 +30,4 @@ public class Cart {
     private String productImageUrl;
     @Column(name = "product_price")
     private String productPrice;
-
-//    @ManyToOne
-//    @JoinColumn(name = "customer_id", nullable = false)
-//    private Customer customer;
-//
-//    @ManyToOne
-//    @JoinColumn(name = "product_id", nullable = false)
-//    private Product product;
 }

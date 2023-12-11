@@ -28,7 +28,7 @@ export class CheckoutComponent implements OnInit {
     "CVV": ""
   }
 
-  paymentMethod: string ='';
+  paymentMethod: string ='creditCard';
   cardDetails = {
       cardNumber: '',
       cardHolderName: '',

@@ -7,7 +7,7 @@ import { ProductService } from './services/product.service';
   styleUrls: ['./app.component.css']
 })
 export class AppComponent {
-  title = 'amazom_eCommerce';
+  title = 'ECommerce';
   totalPrice: number = 0;
   registerObj: any = {
     "userName": "",
