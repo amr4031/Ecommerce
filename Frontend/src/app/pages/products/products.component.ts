@@ -27,6 +27,27 @@ export class ProductsComponent implements OnInit{
     }
   }
 
+  confirmDelete(productId: number): void {
+    if (window.confirm('Are you sure you want to remove this item?')) {
+      // Logic to remove the item
+      this.removeProduct(productId);
+    }
+  }
+
+  // Method to remove product
+  removeProduct(productId: number): void {
+
+    this.productSrv.removeProduct(productId).subscribe((res: any)=> {
+        alert("Product Removed");     
+        window.location.reload();    
+    })
+
+    console.log("remove item ffffffffffffffffffffffffffffffffffffffffffffffff")
+    // Your logic to remove the product
+    // Update your productsArray accordingly
+  }
+
+
   ngOnInit(): void {
     debugger
     this.loadProducts();
